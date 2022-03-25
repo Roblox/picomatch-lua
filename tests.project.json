@@ -1,0 +1,16 @@
+{
+    "name": "PicomatchTestModel",
+    "tree": {
+      "$className": "Folder",
+      "Packages": {
+        "$path": "Packages",
+        "Dev": {
+          "$path": "Packages/Dev"
+        },
+        "PerformanceBenchmarks": {
+          "$path": "src"
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,13 @@
+[package]
+name = "Picomatch"
+version = "0.0.1"
+authors = [
+    "Chris Trześniewski <k.trzesniewski@gmail.com>",
+]
+
+content_root = "src"
+
+[dependencies]
+
+[dev_dependencies]
+JestGlobals = "github.com/roblox/jest-roblox@=2.3.1"
