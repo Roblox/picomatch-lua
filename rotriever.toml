@@ -1,6 +1,6 @@
 [package]
 name = "Picomatch"
-version = "0.2.0"
+version = "0.3.0"
 authors = [
     "Chris Trześniewski <k.trzesniewski@gmail.com>",
 ]
@@ -10,7 +10,7 @@ content_root = "src"
 files = ["*", "!**/__tests__/**"]
 
 [dependencies]
-LuauPolyfill = "github.com/roblox/luau-polyfill@0.3.1"
+LuauPolyfill = "github.com/roblox/luau-polyfill@0.4.0"
 Promise = "github.com/roblox/roblox-lua-promise@3.3.0"
 RegExp = "github.com/roblox/luau-regexp@0.2.0"
 

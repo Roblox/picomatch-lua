@@ -439,14 +439,16 @@ function parse_(input, options) -- ROBLOX deviation END
 				slashes = #match[1]
 				state.index += slashes
 				if slashes % 2 ~= 0 then
-					value ..= "\\"
+					-- ROBLOX FIXME Luau: it seems that Luau narrows the type to be singleton type of "\\" and doesn't allow to append anything to it
+					value ..= "\\" :: any
 				end
 			end
 
 			if opts.unescape == true then
 				value = advance()
 			else
-				value ..= advance()
+				-- ROBLOX FIXME Luau: it seems that Luau narrows the type to be singleton type of "\\" and doesn't allow to append anything to it
+				value ..= advance() :: any
 			end
 
 			if state.brackets == 0 then
@@ -500,7 +502,8 @@ function parse_(input, options) -- ROBLOX deviation END
 				value = "^"
 			end
 
-			prev.value ..= value
+			-- ROBLOX FIXME Luau: it seems that Luau narrows the type to be singleton type of "\\" and doesn't allow to append anything to it
+			prev.value ..= value :: any
 			append({ value = value })
 			continue
 		end
