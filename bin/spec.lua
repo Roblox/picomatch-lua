@@ -7,7 +7,7 @@ local TestEZ = JestGlobals.TestEZ
 
 -- Run all tests, collect results, and report to stdout.
 local result = TestEZ.TestBootstrap:run(
-	{ Packages.PerformanceBenchmarks },
+	{ Packages.Picomatch },
 	TestEZ.Reporters.TextReporterQuiet
 )
 

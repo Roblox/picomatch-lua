@@ -7,7 +7,7 @@
         "Dev": {
           "$path": "Packages/Dev"
         },
-        "PerformanceBenchmarks": {
+        "Picomatch": {
           "$path": "src"
         }
       }

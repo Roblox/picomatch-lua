@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "roblox-lrdb",
+      "request": "launch",
+      "name": "Luau tests",
+      "program": "<PATH_TO_ROBLOX_CLI>",
+      "args": [
+        "run",
+        "--load.model",
+        "tests.project.json",
+        "--debug.on",
+        "--run",
+        "bin/spec.lua",
+        "--fastFlags.allOnLuau",
+        "--fastFlags.overrides",
+        "EnableLoadModule=true",
+        "DebugDisableOptimizedBytecode=true"
+      ],
+      "cwd": "${workspaceFolder}",
+      "stopOnEntry": true
+    }
+  ]
+}
