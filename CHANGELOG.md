@@ -1,5 +1,9 @@
 Picomatch Changelog
 
+## 0.4.0
+
+* upgrade LuauPolyfill to v1
+
 ## 0.3.1
 
 * fix translation error in parse logic ([#4](https://github.com/Roblox/picomatch-lua/pull/4))
