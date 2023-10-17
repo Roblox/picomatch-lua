@@ -778,7 +778,7 @@ function parse_(input, options) -- ROBLOX deviation END
 
 		if value == "?" then
 			local isGroup = Boolean.toJSBoolean(prev) and prev.value == "("
-			if not isGroup and opts.noextglob ~= true and peek() == "(" and peek(2) ~= "?" then
+			if not isGroup and Boolean.toJSBoolean(opts.noextglob) ~= true and peek() == "(" and peek(2) ~= "?" then
 				extglobOpen("qmark", value)
 				continue
 			end
@@ -816,7 +816,7 @@ function parse_(input, options) -- ROBLOX deviation END
 		 ]]
 
 		if value == "!" then
-			if opts.noextglob ~= true and peek() == "(" then
+			if Boolean.toJSBoolean(opts.noextglob) ~= true and peek() == "(" then
 				if peek(2) ~= "?" or not RegExp("[!=<:]"):test(peek(3)) then
 					extglobOpen("negate", value)
 					continue
@@ -834,7 +834,7 @@ function parse_(input, options) -- ROBLOX deviation END
 		 ]]
 
 		if value == "+" then
-			if opts.noextglob ~= true and peek() == "(" and peek(2) ~= "?" then
+			if Boolean.toJSBoolean(opts.noextglob) ~= true and peek() == "(" and peek(2) ~= "?" then
 				extglobOpen("plus", value)
 				continue
 			end
@@ -861,7 +861,7 @@ function parse_(input, options) -- ROBLOX deviation END
 		 ]]
 
 		if value == "@" then
-			if opts.noextglob ~= true and peek() == "(" and peek(2) ~= "?" then
+			if Boolean.toJSBoolean(opts.noextglob) ~= true and peek() == "(" and peek(2) ~= "?" then
 				push({ type = "at", extglob = true, value = value, output = "" })
 				continue
 			end
@@ -905,7 +905,7 @@ function parse_(input, options) -- ROBLOX deviation END
 		end
 
 		local rest = remaining()
-		if Boolean.toJSBoolean(opts.noextglob ~= true and RegExp("^\\([^?]"):test(rest)) then
+		if Boolean.toJSBoolean(opts.noextglob) ~= true and RegExp("^\\([^?]"):test(rest) then
 			extglobOpen("star", value)
 			continue
 		end
