@@ -1,0 +1,57 @@
+[package]
+name = "roblox/picomatch"
+description = "A Luau port of the picomatch glob-matching library (https://github.com/micromatch/picomatch)."
+version = "0.4.0"
+license = "MIT"
+authors = ["Roblox <no-reply@roblox.com>"]
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+repository = "https://github.com/Roblox/picomatch-lua"
+
+exclude = [
+    # Tooling, configs, and meta
+    ".DS_Store",
+    ".github",
+    ".gitattributes",
+    ".gitignore",
+    ".robloxrc",
+    ".vscode",
+    "foreman.toml",
+    "mirror-ignore.txt",
+    "multipack.toml",
+    "rotriever.lock",
+    "rotriever.toml",
+    "selene.toml",
+    "testez.toml",
+
+    # Build outputs
+    "Packages",
+    "multipack-build",
+    "*.rbxl",
+    "*.rbxlx",
+    "*.rbxm",
+    "*.rbxmx",
+
+    # Tests, fixtures, and dev scripts
+    "bin",
+    "scripts",
+    "__tests__",
+    "*.spec.lua",
+
+    # Other Rojo project files — Wally consumers should only see
+    # `default.project.json`. Wally's exclude is gitignore-style, so the
+    # `!` negation re-includes the one file we do want to ship.
+    "*.project.json",
+    "!default.project.json",
+
+    # LOSS prep artefacts
+    "LOSS_*.md",
+]
+
+[dependencies]
+LuauPolyfill = "roblox/luau-polyfill@^1.2.3"
+Promise = "roblox/roblox-lua-promise@^3.5.0"
+RegExp = "roblox/luau-regexp@^0.2.1"
+
+[dev-dependencies]
+JestGlobals = "roblox/jest-roblox@^2.4.1"
