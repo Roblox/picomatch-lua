@@ -1,7 +1,7 @@
 [package]
 name = "roblox/picomatch"
 description = "A Luau port of the picomatch glob-matching library (https://github.com/micromatch/picomatch)."
-version = "0.4.0"
+version = "0.4.1"
 license = "MIT"
 authors = ["Roblox <no-reply@roblox.com>"]
 realm = "shared"
@@ -50,8 +50,8 @@ exclude = [
 
 [dependencies]
 LuauPolyfill = "roblox/luau-polyfill@^1.2.3"
-Promise = "roblox/roblox-lua-promise@^3.5.0"
-RegExp = "roblox/luau-regexp@^0.2.1"
+Promise = "roblox/promise@^3.5.0"
+RegExp = "roblox/regexp@^0.2.1"
 
 [dev-dependencies]
 JestGlobals = "roblox/jest-roblox@^2.4.1"
