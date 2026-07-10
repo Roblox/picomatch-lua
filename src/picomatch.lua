@@ -23,6 +23,28 @@ local function isObject(val)
 	return typeof(val) == "table" and not Array.isArray(val)
 end
 
+local function isPathSeparator(char: string, useWindowsPaths: boolean?): boolean
+	return char == "/" or (useWindowsPaths == true and char == "\\")
+end
+
+local function basename(input: string, useWindowsPaths: boolean?): string
+	local endIndex = #input
+	while endIndex > 0 and isPathSeparator(input:sub(endIndex, endIndex), useWindowsPaths) do
+		endIndex -= 1
+	end
+
+	if endIndex == 0 then
+		return ""
+	end
+
+	local startIndex = endIndex
+	while startIndex > 0 and not isPathSeparator(input:sub(startIndex, startIndex), useWindowsPaths) do
+		startIndex -= 1
+	end
+
+	return input:sub(startIndex + 1, endIndex)
+end
+
 --[[*
  * Creates a matcher function from one or more glob patterns. The
  * returned function takes a string to match as its first argument,
@@ -238,16 +260,12 @@ end
  * @api public
  ]]
 
--- ROBLOX TODO START: implement when possible
-function picomatch.matchBase(input, glob, options, posix_: boolean?): boolean
-	error("matchBase not implemented")
-	-- local _posix = posix_ or utils.isWindows(options)
+function picomatch.matchBase(input: string, glob: any, options: Object?, posix_: boolean?): boolean
+	local useWindowsPaths = if posix_ == nil then utils.isWindows(options) else posix_
+	local regex = if typeof(glob) == "string" then picomatch.makeRe(glob, options) else glob
 
-	-- local regex = if instanceof(glob, RegExp) then glob else picomatch.makeRe(glob, options)
-	-- -- ROBLOX FIXME: return regex:test(path:basename(input))
-	-- return regex:test(input)
+	return regex:test(basename(input, useWindowsPaths))
 end
--- ROBLOX TODO END
 
 --[[*
  * Returns true if **any** of the given glob `patterns` match the specified `string`.

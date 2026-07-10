@@ -22,7 +22,7 @@ return function()
 		end)
 
 		describe("options.matchBase", function()
-			itFIXME("should match the basename of file paths when `options.matchBase` is true", function()
+			it("should match the basename of file paths when `options.matchBase` is true", function()
 				jestExpect(match({ "a/b/c/d.md" }, "*.md")).toEqual(
 					{}
 					-- ROBLOX deviation: jestExpect doesn't accept message
@@ -44,9 +44,10 @@ return function()
 					"x/y/acb",
 					"acb/",
 				})
+				jestExpect(match({ "a/b/c/d.md" }, "*.md", { basename = true })).toEqual({ "a/b/c/d.md" })
 			end)
 
-			itFIXME("should work with negation patterns", function()
+			it("should work with negation patterns", function()
 				assert(isMatch("./x/y.js", "*.js", { matchBase = true }))
 				assert(not isMatch("./x/y.js", "!*.js", { matchBase = true }))
 				assert(isMatch("./x/y.js", "**/*.js", { matchBase = true }))
