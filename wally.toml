@@ -1,7 +1,7 @@
 [package]
 name = "roblox/picomatch"
 description = "A Luau port of the picomatch glob-matching library (https://github.com/micromatch/picomatch)."
-version = "0.4.1"
+version = "0.4.2"
 license = "MIT"
 authors = ["Roblox <no-reply@roblox.com>"]
 realm = "shared"
@@ -10,6 +10,7 @@ repository = "https://github.com/Roblox/picomatch-lua"
 
 exclude = [
     # Tooling, configs, and meta
+    "*.bak",
     ".DS_Store",
     ".github",
     ".gitattributes",
@@ -39,10 +40,10 @@ exclude = [
     "*.spec.lua",
 
     # Other Rojo project files — Wally consumers should only see
-    # `default.project.json`. Wally's exclude is gitignore-style, so the
-    # `!` negation re-includes the one file we do want to ship.
-    "*.project.json",
-    "!default.project.json",
+    # `default.project.json`. Wally 0.3.2 doesn't respect gitignore-style `!`
+    # negation in exclude patterns, so we list the single file we want kept
+    # out (tests.project.json) explicitly rather than relying on a glob.
+    "tests.project.json",
 
     # LOSS prep artefacts
     "LOSS_*.md",
