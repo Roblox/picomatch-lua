@@ -1,5 +1,9 @@
 Picomatch Changelog
 
+## 0.4.3 - 2026-08-21
+
+* Bump luau-regexp dependency from 0.2.0 to 0.3.0
+
 ## 0.4.0
 
 * upgrade LuauPolyfill to v1

@@ -94,12 +94,13 @@ function picomatch_(
 		error(Error.new("TypeError: Expected pattern to be a non-empty string"))
 	end
 
-	local opts = options or {} :: Object
+	local opts = options or {} :: any
 	local posix = utils.isWindows(options)
 	-- ROBLOX Luau FIXME: needs normalization to avoid Type 'RegExp' could not be converted into 'RegExp & {| state: any? |}'
+	-- Glob also has to be cast because we infer type any | string for it instead of Object.
 	local regex: RegExp & { state: any? } = if isState
-		then picomatch.compileRe(glob, options) :: any
-		else picomatch.makeRe(glob, options, false, true)
+		then picomatch.compileRe(glob :: any, options) :: any
+		else picomatch.makeRe(glob :: any, options, false, true)
 
 	local state = regex.state
 	regex.state = nil

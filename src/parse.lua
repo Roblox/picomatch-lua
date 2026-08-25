@@ -512,8 +512,8 @@ function parse_(input, options) -- ROBLOX deviation END
 		 * If we're inside a quoted string, continue
 		 * until we reach the closing double quote.
 		 ]]
-
-		if state.quotes == 1 and value ~= '"' then
+		-- ROBLOX FIXME Luau: analyze narrows `value` to the literal type "]" and refuses the comparison; cast to string
+		if state.quotes == 1 and (value :: string) ~= '"' then
 			value = utils.escapeRegex(value)
 			prev.value ..= value
 			append({ value = value })
@@ -522,9 +522,10 @@ function parse_(input, options) -- ROBLOX deviation END
 
 		--[[*
 		 * Double quotes
-		 ]]
+		]]
 
-		if value == '"' then
+		-- ROBLOX FIXME Luau: analyze narrows `value` to the literal type "]" and refuses the comparison; cast to string
+		if (value :: string) == '"' then
 			state.quotes = state.quotes == 1 and 0 or 1
 			if opts.keepQuotes == true then
 				push({ type = "text", value = value })
@@ -535,14 +536,15 @@ function parse_(input, options) -- ROBLOX deviation END
 		--[[*
 		 * Parentheses
 		 ]]
-
-		if value == "(" then
+		-- ROBLOX FIXME Luau: analyze narrows `value` to the literal type "]" and refuses the comparison; cast to string
+		if (value :: string) == "(" then
 			increment("parens")
 			push({ type = "paren", value = value })
 			continue
 		end
 
-		if value == ")" then
+		-- ROBLOX FIXME Luau: analyze narrows `value` to the literal type "]" and refuses the comparison; cast to string
+		if (value :: string) == ")" then
 			if state.parens == 0 and opts.strictBrackets == true then
 				error(Error.new("SyntaxError: " .. syntaxError("opening", "(")))
 			end
@@ -566,7 +568,8 @@ function parse_(input, options) -- ROBLOX deviation END
 		 * Square brackets
 		 ]]
 
-		if value == "[" then
+		-- ROBLOX FIXME Luau: analyze narrows `value` to the literal type "]" and refuses the comparison; cast to string
+		if (value :: string) == "[" then
 			if opts.nobracket == true or remaining():find("]", 1, true) == nil then
 				if opts.nobracket ~= true and opts.strictBrackets == true then
 					error(Error.new("SyntaxError: " .. syntaxError("closing", "]")))

@@ -1,6 +1,6 @@
 [package]
 name = "Picomatch"
-version = "0.4.2"
+version = "0.4.3"
 authors = [
     "Chris Trześniewski <k.trzesniewski@gmail.com>",
 ]
@@ -15,7 +15,7 @@ registry_index = true
 [dependencies]
 LuauPolyfill = "github.com/roblox/luau-polyfill@1"
 Promise = "github.com/roblox/roblox-lua-promise@3.3.0"
-RegExp = "github.com/roblox/luau-regexp@0.2.0"
+RegExp = "github.com/roblox/luau-regexp@0.3.0"
 
 [dev_dependencies]
 JestGlobals = "github.com/roblox/jest-roblox@2"
