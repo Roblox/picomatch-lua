@@ -6,6 +6,7 @@ authors = [
 ]
 
 content_root = "src"
+repository = "https://github.com/Roblox/picomatch-lua-internal"
 
 files = ["*", "!**/__tests__/**"]
 
